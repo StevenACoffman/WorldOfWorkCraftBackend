@@ -24,7 +24,7 @@ public class Actor {
         if (neo4JObject == null) {
             neo4JObject = new HashSet<Person>();
         }
-        teammates.add(person);
+        ttt.add(person);
 
     }
 
