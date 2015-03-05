@@ -99,6 +99,13 @@ public class Learner {
         }
     }
 
+    private long aggregatePoints() {
+        long aggregatedPoints = 0L;
 
+        for (Achievement achievement : achievements) {
+            aggregatedPoints = aggregatedPoints + achievement.getPoint();
+        }
 
+        return aggregatedPoints;
+    }
 }

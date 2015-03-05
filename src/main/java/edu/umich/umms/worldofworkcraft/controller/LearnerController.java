@@ -28,4 +28,16 @@ public class LearnerController {
             return new ResponseEntity<Learner>( HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "s", method = RequestMethod.GET)
+    public ResponseEntity<Learner> findAllLearners() {
+
+
+        Iterable<Learner> learners = learnerRepository.findAll();
+        if (learners.iterator().hasNext()) {
+            return new ResponseEntity<Learner>(learners.iterator().next(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Learner>( HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -22,8 +22,17 @@ public class Achievement {
         this.name = name;
     }
 
+    public Long getPoint() {
+        return point;
+    }
+
+    public void setPoint(Long point) {
+        this.point = point;
+    }
+
     @GraphId
    private Long id;
    private String name;
+   private Long point;
 
 }
