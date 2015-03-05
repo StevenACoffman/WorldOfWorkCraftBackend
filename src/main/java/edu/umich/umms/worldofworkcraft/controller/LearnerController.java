@@ -32,7 +32,6 @@ public class LearnerController {
     @RequestMapping(value = "s", method = RequestMethod.GET)
     public ResponseEntity<Learner> findAllLearners() {
 
-
         Iterable<Learner> learners = learnerRepository.findAll();
         if (learners.iterator().hasNext()) {
             return new ResponseEntity<Learner>(learners.iterator().next(), HttpStatus.OK);
