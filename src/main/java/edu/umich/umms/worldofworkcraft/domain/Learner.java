@@ -61,11 +61,13 @@ public class Learner {
     private String uniqname;
     private String name;
 
-    @RelatedTo(type="CHALLENGE", direction= Direction.OUTGOING)
+    @RelatedTo(direction= Direction.OUTGOING)
     public @Fetch Set<Challenge> challenges;
 
-    @RelatedTo(type="ACHIEVEMENT", direction= Direction.OUTGOING)
+    @RelatedTo(direction= Direction.OUTGOING)
     public @Fetch Set<Achievement> achievements;
+
+
 
     //edges - verb functions
     private void learnStuff(Achievement achievement){
@@ -99,7 +101,7 @@ public class Learner {
         }
     }
 
-    private long aggregatePoints() {
+    public long aggregatePoints() {
         long aggregatedPoints = 0L;
 
         for (Achievement achievement : achievements) {
