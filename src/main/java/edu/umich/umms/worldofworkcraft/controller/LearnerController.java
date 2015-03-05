@@ -19,10 +19,7 @@ public class LearnerController {
 
     @RequestMapping(value = "/{uniqname}", method = RequestMethod.GET)
     public ResponseEntity<Learner> findLearner(@PathVariable String uniqname) {
-        Learner l = new Learner();
-        l.setName("Misty");
-        l.setUniqname("mperiard");
-        learnerRepository.save(l);
+
 
         Iterable<Learner> learners = learnerRepository.findByUniqname(uniqname);
         if (learners.iterator().hasNext()) {
