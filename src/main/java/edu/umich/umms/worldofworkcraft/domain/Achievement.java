@@ -37,11 +37,19 @@ public class Achievement {
         this.learner = learner;
     }
 
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
 
     @GraphId
-   private Long id;
-   private String name;
+    private Long id;
+    private String name;
     private Long points;
     private Learner learner;
+    private String imageFileName;
 
 }

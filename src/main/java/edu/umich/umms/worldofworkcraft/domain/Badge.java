@@ -13,8 +13,8 @@ public class Badge {
     
     @GraphId
     private Long id;
-    
     private String name;
+    private String imageFileName;
     
     @RelatedTo(type = "REQUIRES", direction = Direction.OUTGOING)
     public @Fetch Set<Achievement> achievements;
@@ -35,4 +35,11 @@ public class Badge {
         this.name = name;
     }
 
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
 }
