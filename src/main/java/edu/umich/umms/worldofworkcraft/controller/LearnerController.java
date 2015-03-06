@@ -1,5 +1,6 @@
 package edu.umich.umms.worldofworkcraft.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.umich.umms.worldofworkcraft.domain.Achievement;
+import edu.umich.umms.worldofworkcraft.domain.Badge;
 import edu.umich.umms.worldofworkcraft.domain.Learner;
+import edu.umich.umms.worldofworkcraft.repository.BadgeRepository;
 import edu.umich.umms.worldofworkcraft.repository.LearnerRepository;
 
 @Controller
@@ -21,6 +24,9 @@ public class LearnerController {
 
     @Autowired
     LearnerRepository learnerRepository;
+    
+    @Autowired
+    BadgeRepository badgeRepository;
 
     @RequestMapping(value = "/{uniqname}", method = RequestMethod.GET)
     public ResponseEntity<Learner> findLearner(@PathVariable String uniqname) {
@@ -49,6 +55,16 @@ public class LearnerController {
             return new ResponseEntity<Set<Achievement>>(learners.iterator().next().getAchievements(), HttpStatus.OK);
         } else {
             return new ResponseEntity<Set<Achievement>>(new HashSet<Achievement>(), HttpStatus.OK);
+        }
+    }
+    
+    @RequestMapping(value = "/{uniqname}/badges", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Badge>> findBadges(@PathVariable String uniqname) {
+        Iterable<Badge> badges = badgeRepository.findBadgesByUniqname(uniqname);
+        if (badges.iterator().hasNext()) {
+            return new ResponseEntity<Iterable<Badge>>(badges, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Iterable<Badge>>(new ArrayList<Badge>(), HttpStatus.OK);
         }
     }
 }
