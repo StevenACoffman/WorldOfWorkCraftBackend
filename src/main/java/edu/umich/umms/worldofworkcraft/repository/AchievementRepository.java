@@ -8,5 +8,7 @@ import org.springframework.data.neo4j.repository.GraphRepository;
 
 public interface AchievementRepository extends GraphRepository<Achievement> {
     @Query("match (l:Learner {uniqname:{0}})-[:LEARN]-(:Achievement) return l")
-    Iterable<Challenge> findLearnedAchievementsByUniqname(String uniqname);
+    Iterable<Achievement> findLearnedAchievementsByUniqname(String uniqname);
+    @Query("match (a:Achievement {name:{0}}) return a")
+    Iterable<Achievement> findByAchievementName(String achievementName);
 }

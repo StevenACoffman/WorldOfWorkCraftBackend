@@ -19,8 +19,6 @@ public class LearnerController {
 
     @RequestMapping(value = "/{uniqname}", method = RequestMethod.GET)
     public ResponseEntity<Learner> findLearner(@PathVariable String uniqname) {
-
-
         Iterable<Learner> learners = learnerRepository.findByUniqname(uniqname);
         if (learners.iterator().hasNext()) {
             return new ResponseEntity<Learner>(learners.iterator().next(), HttpStatus.OK);
@@ -31,7 +29,6 @@ public class LearnerController {
 
     @RequestMapping(value = "s", method = RequestMethod.GET)
     public ResponseEntity<Learner> findAllLearners() {
-
         Iterable<Learner> learners = learnerRepository.findAll();
         if (learners.iterator().hasNext()) {
             return new ResponseEntity<Learner>(learners.iterator().next(), HttpStatus.OK);

@@ -61,13 +61,11 @@ public class Learner {
     private String uniqname;
     private String name;
 
-    @RelatedTo(direction= Direction.OUTGOING)
+    @RelatedTo(type="LEARN", direction= Direction.OUTGOING)
     public @Fetch Set<Challenge> challenges;
 
-    @RelatedTo(direction= Direction.OUTGOING)
+    @RelatedTo(type="LEARN", direction= Direction.OUTGOING)
     public @Fetch Set<Achievement> achievements;
-
-
 
     //edges - verb functions
     private void learnStuff(Achievement achievement){
