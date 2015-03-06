@@ -36,7 +36,7 @@ public class LogController {
     Neo4jTemplate template;
 
     @ResponseBody
-    @RequestMapping(value = "/{uniqname}", method = RequestMethod.POST)
+    @RequestMapping(value = "/log", method = RequestMethod.POST)
     public void log(@RequestBody AchievementLog achievementLog, HttpServletRequest request) throws IOException {
         Iterable<Learner> learners = learnerRepository.findByUniqname(achievementLog.getUniqname());
         Learner learner = null;
