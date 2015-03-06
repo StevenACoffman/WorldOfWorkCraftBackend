@@ -24,6 +24,10 @@ public class Challenge {
         this.name = name;
     }
 
+    public String getStartDate() { return startDate; }
+
+    public void setStartDate(String startDate) { this.startDate = startDate; }
+
     public String getEndDate() {
         return endDate;
     }
@@ -36,5 +40,6 @@ public class Challenge {
     private Long id;
 
     private String name;
+    private String startDate;
     private String endDate;
 }

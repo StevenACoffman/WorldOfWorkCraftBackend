@@ -10,4 +10,6 @@ public interface ChallengeRepository extends GraphRepository<Challenge> {
     @Query("match (l:Learner {uniqname:{0}})-[:ACCEPT]-(c:Challenge) return c")
     Iterable<Challenge> findByUniqname(String uniqname);
 
+    @Query("match (c:Challenge {name:{0}}) return c")
+    Iterable<Challenge> findByChallengeName(String challengeName);
 }
