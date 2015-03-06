@@ -1,13 +1,7 @@
 package edu.umich.umms.worldofworkcraft.domain;
 
-import lombok.Data;
-import org.neo4j.graphdb.Direction;
-import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.annotation.RelatedTo;
-
-import java.util.Set;
 
 @NodeEntity
 public class Achievement {
@@ -28,11 +22,11 @@ public class Achievement {
     }
 
     public Long getPoint() {
-        return point;
+        return points;
     }
 
-    public void setPoint(Long point) {
-        this.point = point;
+    public void setPoints(Long points) {
+        this.points = points;
     }
 
     public Learner getLearner() {
@@ -47,7 +41,7 @@ public class Achievement {
     @GraphId
    private Long id;
    private String name;
-   private Long point;
+    private Long points;
     private Learner learner;
 
 }
