@@ -2,6 +2,7 @@ package edu.umich.umms.worldofworkcraft.controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.umich.umms.worldofworkcraft.domain.Achievement;
 import edu.umich.umms.worldofworkcraft.domain.Badge;
 import edu.umich.umms.worldofworkcraft.domain.Learner;
+import edu.umich.umms.worldofworkcraft.repository.AchievementRepository;
 import edu.umich.umms.worldofworkcraft.repository.BadgeRepository;
 import edu.umich.umms.worldofworkcraft.repository.LearnerRepository;
 
@@ -27,6 +29,9 @@ public class LearnerController {
     
     @Autowired
     BadgeRepository badgeRepository;
+    
+    @Autowired
+    AchievementRepository achievementRepository;
 
     @RequestMapping(value = "/{uniqname}", method = RequestMethod.GET)
     public ResponseEntity<Learner> findLearner(@PathVariable String uniqname) {
@@ -66,5 +71,19 @@ public class LearnerController {
         } else {
             return new ResponseEntity<Iterable<Badge>>(new ArrayList<Badge>(), HttpStatus.OK);
         }
+    }
+    
+    @RequestMapping(value = "/{uniqname}/partial-badges", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Badge>> findPartialBadges(@PathVariable String uniqname) {
+        List<Badge> partialBadges = new ArrayList<>();
+
+        Iterable<Badge> badges = badgeRepository.findAll();
+        
+        for (Badge badge : badges) {
+            badge.achievements = new HashSet<Achievement>(achievementRepository.findByLearnerAndBadge(uniqname, badge.getName()));
+            partialBadges.add(badge);
+        }
+
+        return new ResponseEntity<Iterable<Badge>>(partialBadges, HttpStatus.OK);
     }
 }
