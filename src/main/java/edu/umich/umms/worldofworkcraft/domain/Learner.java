@@ -100,7 +100,7 @@ public class Learner {
         long aggregatedPoints = 0L;
 
         for (Achievement achievement : achievements) {
-            aggregatedPoints = aggregatedPoints + achievement.getPoint();
+            aggregatedPoints = aggregatedPoints + achievement.getPoints();
         }
 
         return aggregatedPoints;

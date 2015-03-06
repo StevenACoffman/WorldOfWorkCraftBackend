@@ -21,7 +21,7 @@ public class Achievement {
         this.name = name;
     }
 
-    public Long getPoint() {
+    public Long getPoints() {
         return points;
     }
 
