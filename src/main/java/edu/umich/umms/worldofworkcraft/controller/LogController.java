@@ -1,21 +1,23 @@
 package edu.umich.umms.worldofworkcraft.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.neo4j.support.Neo4jTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import edu.umich.umms.worldofworkcraft.domain.Achievement;
-import edu.umich.umms.worldofworkcraft.domain.Challenge;
 import edu.umich.umms.worldofworkcraft.domain.Learner;
-import edu.umich.umms.worldofworkcraft.model.AchievementLog;;
+import edu.umich.umms.worldofworkcraft.model.AchievementLog;
 import edu.umich.umms.worldofworkcraft.repository.AchievementRepository;
 import edu.umich.umms.worldofworkcraft.repository.ChallengeRepository;
 import edu.umich.umms.worldofworkcraft.repository.LearnerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.support.Neo4jTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/logger")

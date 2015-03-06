@@ -1,16 +1,13 @@
 package edu.umich.umms.worldofworkcraft.domain;
 
-import lombok.Data;
-
+import java.util.HashSet;
+import java.util.Set;
 
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @NodeEntity
 public class Learner {
@@ -61,7 +58,7 @@ public class Learner {
     private String uniqname;
     private String name;
 
-    @RelatedTo(type="LEARN", direction= Direction.OUTGOING)
+    @RelatedTo(type = "ACCEPT", direction = Direction.OUTGOING)
     public @Fetch Set<Challenge> challenges;
 
     @RelatedTo(type="LEARN", direction= Direction.OUTGOING)
