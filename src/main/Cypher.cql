@@ -42,12 +42,12 @@ with 1 as dummy
 match (fudd:Learner {uniqname:"efudd"}) create (a:Achievement:_Achievement {name:"Share Google Doc", point:5}) create (fudd)-[:LEARN]->(a)
 
 //-----------Create Hackathon Badge
-create (b:Badge:_Badge {name:"Hackathon", requiresCount:3})
+create (b:Badge:_Badge {name:"Hackathon", requiresCount:3, imageFileName:"hack-with-friends-badge-2.png"})
 
 //-----------Create Achievements
-create (join:Achievement:_Achievement {name:"Join a Team",points:10})
-create (stay:Achievement:_Achievement {name:"Stay up late",points:30})
-create (moment:Achievement:_Achievement {name:"Have a moment of despair",points:20})
+create (join:Achievement:_Achievement {name:"Join a Team",points:10, imageFileName:"join-a-team.png"})
+create (stay:Achievement:_Achievement {name:"Stay up late",points:30, imageFileName:"up-all-night.png"})
+create (moment:Achievement:_Achievement {name:"Have a moment of despair",points:20, imageFileName:"moment-of-despair.png"})
 
 //-----------Create achievement for the badge
 with 1 as dummy
