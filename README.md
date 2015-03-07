@@ -26,13 +26,14 @@ neo4j start
 
 
 To view all the nodes and relationships, run:
-
+```
 match (l) return l;
+```
 
 ### Step 5: install tomcat with homebrew
 
 ```bash
-brew install tomcat**
+brew install tomcat
 ```
 
 ### Step 6: start tomcat
@@ -57,7 +58,7 @@ Make GET REST request to
 **==Delete ==**
 
 **--Delete everything**
-
+```
 MATCH (a)
 
 WITH a
@@ -69,8 +70,9 @@ OPTIONAL MATCH (a)-[r]-()
 DELETE a,r
 
 RETURN COUNT(\*)
-
+```
 **--Delete entity and relationship: Delete **Neo4j Challenge** entity
 and its relationship**
-
+```
 match (c:Challenge {name:"Neo4j Challenge"})-[r]-() delete c,r;
+```
